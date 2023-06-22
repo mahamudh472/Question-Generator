@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/view.css' %}">
+{% endblock %}
+{% block body %}
+<h1>Short Questions:</h1>
+<div class="s_ques">
+{% for i in s_ques %}
+<div class="ques">{{i.id}}. {{i.ques}}</div>
+
+{% endfor %}
+</div>
+<h1>Compositional Questions:</h1>
+<div class="c_ques">
+{% for i in c_ques %}
+<div class="ques">{{i.id}}. {{i.ques}}</div>
+
+{% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/generate.css' %}">
+<style>
+    .ques_paper{
+        text-align: center;
+        height: 7in;
+    }
+    #btn{
+        margin-top: 20px;
+        padding: 10px;
+    }
+    @media print{
+        #btn, #logo{
+            display: none;
+        }
+        .nav a{
+            display: none;
+        }
+        .main-container{
+            border: none;
+        }
+    }
+    @page
+    {
+        size: auto;
+        margin: 0mm;
+    }
+</style>
+{% endblock %}
+{% block body %}
+
+
+<div class="ques_paper" id="myDiv">
+    <br><br>
+    <div class="top-label">
+        <h1>Example High School</h1>
+        <h2>Test Exam-01</h2>
+        <h5>Computer Science and Technology</h5>
+    </div>
+    <div class="all_ques">
+        <h4>Full Marks: 20</h4>
+        <br><br>
+        <div class="short-ques">
+            <center><u><h4>Group A - 5 Marks</h4></u></center>
+            {% for i in short_list %}
+            <div class="ques">{{forloop.counter}}. {{i.ques}}</div>
+            {% endfor %}
+        </div><br><br>
+        <div class="comp_ques">
+            <center><u><h4>Group B - 15 Marks</h4></u></center>
+
+            {% for i in comp_list %}
+            <div class="ques">{{forloop.counter}}. {{i.ques}}</div>
+            {% endfor %}
+        </div>
+    </div>
+
+<center></div><button onclick="window.print()" id="btn">Download</button></center>
+{% endblock %}

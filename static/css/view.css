@@ -1,0 +1,20 @@
+.sub-container{
+    justify-content: start;
+    align-items: start;
+    padding-left: 50px;
+    padding-top: 20px;
+    
+}
+
+.s_ques, .c_ques{
+    text-align: left;
+    margin-bottom: 20px;
+}
+.ques{
+    
+    font-size: 18px;
+    /* font-weight: bold; */
+}
+h1{
+    color: rgb(0, 118, 253);
+}

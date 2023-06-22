@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question Generator</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    {% block style %} {% endblock %}
+</head>
+
+
+<body>
+    <div class="nav">
+        <a href="/" class="nav-item">Home</a>
+        <a href="/add_question" id="add_question" class="nav-item">Add Question</a>
+        <a href="/view_question" id="view_question" class="nav-item ">View Questions</a>
+        <a href="/generate" id="generate" class="nav-item">Generate Question Set</a>
+        <a href="/logout" class="nav-item">logout</a>
+    </div>
+    <div class="main-container">
+        <img src="{% static 'gallery/logo.png' %}" id="logo" alt="">
+        <div class="sub-container">
+            {% block body %}
+            {% endblock %}
+        </div>
+    </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"></script>
+<script>
+    var my_location = location.href
+    my = (my_location.split("/"))
+    last_url = my[my.length - 1]
+
+    if (my[my.length - 1] === '') {
+        document.getElementsByClassName('nav-item')[0].classList.add('current')
+    } else {
+        document.getElementById(`${last_url}`).classList.add('current')
+    }
+
+    function downloaddiv() {
+        var divElement = document.getElementById('myDiv');
+
+        html2canvas(divElement, {
+            allowTaint: true,
+            useCORS: true
+        }).then(function (canvas) {
+            var imgData = canvas.toDataURL('image/png');
+
+            var pdf = new jsPDF();
+            pdf.addImage(imgData, 'PNG', 0, 0, divElement.offsetWidth, divElement.offsetHeight);
+            pdf.save('div_content.pdf');
+        });
+    }
+</script>
+
+</html>

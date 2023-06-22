@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<form action="add_question" method="post">
+    {% csrf_token %}
+<div class="f_text">
+    <label for="s_q">Add Short Questions</label><br>
+    <textarea name="short_ques" id="s_q" cols="50" rows="4"></textarea>
+</div><br>
+<div class="s_text">
+    <label for="s_q">Add Compositional Questions</label><br>
+    <textarea  name="comp_ques" id="" cols="50" rows="4"></textarea>
+</div><br>
+<input type="submit" value="Submit" name="" id="sub_btn">
+</form>
+{% endblock %}

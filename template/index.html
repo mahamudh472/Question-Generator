@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+
+{% endblock %}
+{% block body %}
+
+    <a href="/add_question" style="background-color: red;" class="menu-items">Add Questions</a>
+    <a href="/view_question" style="background-color: rgb(0, 118, 253);" class="menu-items">View Questions</a>
+    <a href="/generate" style="background-color: rgb(35, 235, 68); color: black;" class="menu-items">Generate Question Set</a>
+
+
+{% endblock %}
